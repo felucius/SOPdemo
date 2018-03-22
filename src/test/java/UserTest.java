@@ -43,4 +43,11 @@ public class UserTest {
         
         assertNotNull(user);
     }
+    
+    @Test
+    public void testErrorOnWrongEmail(){
+        User user = new User("Maxime", null);
+        
+        assertNotNull(user.getEmail());
+    }
 }
