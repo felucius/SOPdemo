@@ -48,21 +48,22 @@ public class UserTest {
     public void testErrorOnWrongEmail(){
         User user = new User("Maxime", null);
         
-        assertNotNull(user.getEmail());
+        assertNull(user.getEmail());
     }
     
     @Test
     public void testErrorOnWrongName(){
         User user = new User(null, "Maxime@hotmail.com");
         
-        assertNotNull(user.getName());
+        assertNull(user.getName());
     }
     
     @Test
     public void testErrorValuesNull(){
         User user = new User(null, null);
         
-        assertNotNull(user);
+        assertNull(user.getName());
+        assertNull(user.getEmail());
     }
     
     @Test
@@ -70,6 +71,6 @@ public class UserTest {
         User user = new User(null, null);
         User user2 = new User(null, null);
         
-        assertNotEquals(user, user2);
+        assertEquals(user.equals(user2), user2.equals(user));
     }
 }
