@@ -57,4 +57,11 @@ public class UserTest {
         
         assertNotNull(user.getName());
     }
+    
+    @Test
+    public void testErrorValuesNull(){
+        User user = new User(null, null);
+        
+        assertNotNull(user);
+    }
 }
