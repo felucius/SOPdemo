@@ -50,4 +50,11 @@ public class UserTest {
         
         assertNotNull(user.getEmail());
     }
+    
+    @Test
+    public void testErrorOnWrongName(){
+        User user = new User(null, "Maxime@hotmail.com");
+        
+        assertNotNull(user.getName());
+    }
 }
