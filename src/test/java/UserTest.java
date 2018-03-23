@@ -48,6 +48,6 @@ public class UserTest {
     public void testErrorOnWrongEmail(){
         User user = new User("Maxime", null);
         
-        assertNotNull(user.getEmail());
+        assertNull(user.getEmail());
     }
 }
