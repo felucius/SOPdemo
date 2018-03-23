@@ -64,4 +64,12 @@ public class UserTest {
         
         assertNotNull(user);
     }
+    
+    @Test
+    public void twoUserValuesNull(){
+        User user = new User(null, null);
+        User user2 = new User(null, null);
+        
+        assertNotEquals(user, user2);
+    }
 }
