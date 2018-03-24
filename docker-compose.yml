@@ -22,3 +22,9 @@ services:
       - mysql
     depends_on:
       - mysql
+      
+  sonarqube:
+    image: sonarqube
+    command: -Dsonar.web.context=/sonar
+    ports:
+      - "9000:9000"
