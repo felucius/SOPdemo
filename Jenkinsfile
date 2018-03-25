@@ -20,7 +20,7 @@ node {
 
     stage('Sonar'){
         try {
-            sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.1:sonar"
+            sh "mvn sonar:sonar"
         } catch(error){
             echo "The sonar server could not be reached ${error}"
         }
