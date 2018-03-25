@@ -6,7 +6,7 @@ node {
 
     stage('Initialize'){
         def dockerHome = tool 'Docker'
-        def mavenHome  = tool 'Maven3'
+        def mavenHome  = tool 'Maven2'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
     }
 
