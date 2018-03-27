@@ -41,10 +41,10 @@ node {
 
     stage('Docker-compose --> .war file'){
         try {
-            sh "sudo -n docker-compose down"
+            sh "sudo -S docker-compose down true"
         }catch(error){}
         try {
-            sh "sudo -n docker-compose up -d"
+            sh "sudo -S docker-compose up -d true"
         }catch(error){}
     }
 }
