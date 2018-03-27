@@ -2,6 +2,7 @@ def CONTAINER_NAME="SOP6demo"
 def CONTAINER_TAG="latest"
 def buildInfo
 def server = Artifactory.server "artifactoryID"
+def rtMaven = Artifactory.newMavenBuild()
 
 node {
     git url: 'https://github.com/felucius/SOPdemo.git'
@@ -34,7 +35,7 @@ node {
         rtMaven.resolver releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot', server: server
         buildInfo = Artifactory.newBuildInfo()
         buildInfo.env.capture = true
-        rtMaven.run pom: 'maven-example/pom.xml', goals: 'clean install', buildInfo: buildInfo
+        rtMaven.run pom: 'pom.xml', goals: 'clean install', buildInfo: buildInfo
         server.publishBuildInfo buildInfo
     }
 
