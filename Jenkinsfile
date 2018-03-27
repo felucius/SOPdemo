@@ -5,6 +5,10 @@ def server = Artifactory.server "artifactoryID"
 def rtMaven = Artifactory.newMavenBuild()
 
 node {
+	agent{
+		dockerfile true
+	}
+
     git url: 'https://github.com/felucius/SOPdemo.git'
 
     stage('Initialize'){
@@ -37,6 +41,10 @@ node {
         buildInfo.env.capture = true
         rtMaven.run pom: 'pom.xml', goals: 'clean install', buildInfo: buildInfo
         server.publishBuildInfo buildInfo
+    }
+
+    stage('Deploy war to payara'){
+    	sh "sudo ADD target/*.war /opt/payara41/glassfish/domains/domain1/applications"
     }
 
     stage('Docker-compose'){
