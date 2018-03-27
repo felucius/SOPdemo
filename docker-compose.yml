@@ -27,4 +27,4 @@ services:
     image: sonarqube
     command: -Dsonar.web.context=/sonar
     ports:
-      - "9001:9000"
+      - "9898:9000"
