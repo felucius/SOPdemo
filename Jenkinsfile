@@ -39,11 +39,7 @@ node {
         server.publishBuildInfo buildInfo
     }
 
-    stage('Deploy war to payara'){
-    	sh "cp target/*.war /opt/payara41/glassfish/domains/domain1/applications"
-    }
-
-    stage('Docker-compose'){
+    stage('Docker-compose --> .war file'){
         try {
             sh "docker-compose down"
         }catch(error){}
