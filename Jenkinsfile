@@ -5,10 +5,6 @@ def server = Artifactory.server "artifactoryID"
 def rtMaven = Artifactory.newMavenBuild()
 
 node {
-	agent{
-		dockerfile true
-	}
-
     git url: 'https://github.com/felucius/SOPdemo.git'
 
     stage('Initialize'){
