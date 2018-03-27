@@ -40,7 +40,7 @@ node {
     }
 
     stage('Deploy war to payara'){
-    	sh "sudo cp target/*.war /opt/payara41/glassfish/domains/domain1/applications"
+    	sh "cp target/*.war /opt/payara41/glassfish/domains/domain1/applications"
     }
 
     stage('Docker-compose'){
