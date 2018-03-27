@@ -40,15 +40,15 @@ node {
     }
 
     stage('Deploy war to payara'){
-    	sh "sudo ADD target/*.war /opt/payara41/glassfish/domains/domain1/applications"
+    	sh "ADD target/*.war /opt/payara41/glassfish/domains/domain1/applications"
     }
 
     stage('Docker-compose'){
         try {
-            sh "sudo docker-compose down"
+            sh "docker-compose down"
         }catch(error){}
         try {
-            sh "sudo docker-compose up -d"
+            sh "docker-compose up -d"
         }catch(error){}
     }
 }
