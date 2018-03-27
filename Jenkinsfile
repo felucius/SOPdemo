@@ -1,5 +1,7 @@
 def CONTAINER_NAME="SOP6demo"
 def CONTAINER_TAG="latest"
+def buildInfo
+def server = Artifactory.server "artifactoryID"
 
 node {
     git url: 'https://github.com/felucius/SOPdemo.git'
@@ -24,6 +26,16 @@ node {
         } catch(error){
             echo "The sonar server could not be reached ${error}"
         }
+    }
+
+    stage ('Artifactory configuration') {
+        rtMaven.tool = "Maven3" // Tool name from Jenkins configuration
+        rtMaven.deployer releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local', server: server
+        rtMaven.resolver releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot', server: server
+        def buildInfo = Artifactory.newBuildInfo()
+        buildInfo.env.capture = true
+        rtMaven.run pom: 'maven-example/pom.xml', goals: 'clean install', buildInfo: buildInfo
+        server.publishBuildInfo buildInfo
     }
 
     stage('Docker-compose'){
