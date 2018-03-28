@@ -39,12 +39,12 @@ node {
         server.publishBuildInfo buildInfo
     }
 
-    stage('Docker-compose'){
+    stage('Docker-compose --> .war file'){
         try {
-            sh "sudo docker-compose down"
+            sh "sudo -S docker-compose down"
         }catch(error){}
         try {
-            sh "sudo docker-compose up -d"
+            sh "sudo -S docker-compose up -d"
         }catch(error){}
     }
 }
