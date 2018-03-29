@@ -1,0 +1,19 @@
+Ontwikkelomgeving
+  payara              8088:8080
+  payara admin        4849:4848
+  sql                 3307:3306
+
+Testomgeving          
+  payara              8090:8080
+  payara admin        4890:4848
+  sql                 3390:3306
+
+Acceptatieomgeving
+  payara              8091:8080
+  payara admin        4891:4848
+  sql                 3391:3306
+
+Productieomgeving
+  payara              8092:8080
+  payara admin        4892:4848
+  sql                 3392:3306
