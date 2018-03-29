@@ -45,6 +45,7 @@ node {
              sh "sudo -S docker-compose rm -f"
         }catch(error){}
         try {
+            sh "sudo -S docker-compose build --no-cache"
             sh "sudo -S docker-compose up -d"
         }catch(error){}
     }
